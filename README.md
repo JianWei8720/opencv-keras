@@ -1,2 +1,4 @@
 # opencv-keras
-My AI learning sample
+My AI learning sample.
+
+opencv-2.4.13
