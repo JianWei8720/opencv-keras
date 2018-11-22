@@ -19,14 +19,15 @@ if __name__ == '__main__':
             for (x,y,w,h) in faces:
                 #裁剪出人脸，单独保存成图片
                 head = image[y-10:y+h,x:x+w]
-
                 result = model.predict(head)
                 if result == 0:  # boss
-                    print('JianWei,你好！')
+		    cv.rectangle(image,(x,y),(x+w,y+h),(0,255,0),1)
+		    cv.putText(image, 'WeiJian', (x+5,y+5), cv.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 1)
  #                   show_image()
                 else:
-                    print('......')
-
+		    cv.rectangle(image,(x,y),(x+w,y+h),(0,255,0),1)
+		    cv.putText(image, 'Others', (x+5,y+5), cv.FONT_HERSHEY_SIMPLEX, 1, (0,120,255), 1)
+	    cv.imshow("Find me", image)
         key = cv.waitKey(40)
         if key == 27 or key == ord('q'): #如果按ESC或q键，退出
             break
